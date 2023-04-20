@@ -6,24 +6,15 @@ require './lib/utils/prompt_util'
 class Travel
   TYPES = %i[travel_itinerary weather violence_info best_way].freeze
 
-  def with_dates(start_date, end_date)
+  def initialize(start_date:, end_date:, origin:, destination:)
     @start_date = start_date
     @end_date = end_date
-    self
-  end
-
-  def from(origin)
     @origin = origin
-    self
-  end
-
-  def to(destination)
     @destination = destination
-    self
   end
 
   def plan!(type)
-    raise 'type not found' unless TYPES.include? type.to_sym
+    raise 'Type not found' unless TYPES.include?(type.to_sym)
 
     send(type)
   end
