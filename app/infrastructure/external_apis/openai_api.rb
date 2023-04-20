@@ -1,8 +1,6 @@
 require 'openai'
-require 'dotenv'
-Dotenv.load
 
-class OpenAiService
+class OpenAiApi
   def initialize
     @openai_client = OpenAI::Client.new(access_token: ENV['OPEN_AI_KEY'])
   end
